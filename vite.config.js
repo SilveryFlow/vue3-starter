@@ -4,6 +4,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import viteCompression from 'vite-plugin-compression'
+import viteRestart from 'vite-plugin-restart'
 import process from 'node:process'
 
 // https://vite.dev/config/
@@ -13,7 +14,18 @@ export default defineConfig(({ mode }) => {
   const API_BASE = env.VITE_BASE_API || '/api'
   const WS_BASE = env.VITE_WEBSOCKET_BASE_API || '/ws'
   return {
-    plugins: [vue(), vueDevTools(), viteCompression()],
+    plugins: [
+      vue(),
+      vueDevTools(),
+      viteCompression(),
+      viteCompression({
+        algorithm: 'brotliCompress',
+        ext: '.br',
+      }),
+      viteRestart({
+        restart: ['.env', 'vite.config.[jt]s', 'src/config/**/*'],
+      }),
+    ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -53,6 +65,7 @@ export default defineConfig(({ mode }) => {
             { name: 'vue-router-vendor', test: /\/node_modules\/vue-router/ },
             { name: 'echarts-vendor', test: /\/node_modules\/echarts/ },
             { name: 'element-plus-vendor', test: /\/node_modules\/element-plus/ },
+            { name: 'three-vendor', test: /\/node_modules\/three/ },
           ],
         },
       },
