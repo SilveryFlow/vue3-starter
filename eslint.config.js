@@ -1,9 +1,19 @@
+import path from 'node:path'
+import fs from 'node:fs'
+
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+
+// 读取 unplugin-auto-import 生成的 ESLint globals
+const autoImportGlobalsPath = path.resolve('./.eslintrc-auto-import.json')
+let autoImportGlobals = {}
+if (fs.existsSync(autoImportGlobalsPath)) {
+  autoImportGlobals = JSON.parse(fs.readFileSync(autoImportGlobalsPath, 'utf-8')).globals || {}
+}
 
 export default defineConfig([
   {
@@ -17,6 +27,7 @@ export default defineConfig([
     languageOptions: {
       globals: {
         ...globals.browser,
+        ...autoImportGlobals,
       },
     },
   },

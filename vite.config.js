@@ -1,11 +1,15 @@
 import { fileURLToPath, URL } from 'node:url'
+import process from 'node:process'
 
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import viteCompression from 'vite-plugin-compression'
 import viteRestart from 'vite-plugin-restart'
-import process from 'node:process'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import legacy from '@vitejs/plugin-legacy'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -14,6 +18,9 @@ export default defineConfig(({ mode }) => {
   const API_BASE = env.VITE_BASE_API || '/api'
   const WS_BASE = env.VITE_WEBSOCKET_BASE_API || '/ws'
   return {
+    css: {
+      devSourcemap: true,
+    },
     plugins: [
       vue(),
       vueDevTools(),
@@ -24,6 +31,26 @@ export default defineConfig(({ mode }) => {
       }),
       viteRestart({
         restart: ['.env', 'vite.config.[jt]s', 'src/config/**/*'],
+      }),
+      AutoImport({
+        imports: [
+          'vue',
+          'vue-router',
+          'pinia',
+          '@vueuse/core',
+          { '@vueuse/router': ['useRouteHash', 'useRouteQuery', 'useRouteParams'] },
+        ],
+        resolvers: [ElementPlusResolver()],
+        dts: 'src/types/auto-imports.d.ts',
+        eslintrc: {
+          enabled: true,
+        },
+      }),
+      Components({
+        resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+      }),
+      legacy({
+        targets: ['defaults', 'not IE 11'],
       }),
     ],
     resolve: {
