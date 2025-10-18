@@ -12,7 +12,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-import { getElementPlusNames } from './scripts/getElComponents'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -70,19 +69,17 @@ export default defineConfig(({ mode }) => {
           IconsResolver({
             enabledCollections: ['ep'],
           }),
+          (componentName) => {
+            if (componentName === 'VChart') {
+              return {
+                name: 'default',
+                from: 'vue-echarts',
+              }
+            }
+          },
         ],
         dirs: ['src/components', 'src/views'],
         dts: 'src/types/components.d.ts',
-        types: [
-          {
-            from: 'vue-router',
-            names: ['RouterLink', 'RouterView'],
-          },
-          {
-            from: 'element-plus',
-            names: getElementPlusNames(),
-          },
-        ],
       }),
       Icons({
         autoInstall: true,
