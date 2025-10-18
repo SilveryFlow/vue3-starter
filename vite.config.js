@@ -10,6 +10,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+import { getElementPlusNames } from './scripts/getElComponents'
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -62,6 +64,18 @@ export default defineConfig(({ mode }) => {
       }),
       Components({
         resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+        dirs: ['src/components', 'src/views'],
+        dts: 'src/types/components.d.ts',
+        types: [
+          {
+            from: 'vue-router',
+            names: ['RouterLink', 'RouterView'],
+          },
+          {
+            from: 'element-plus',
+            names: getElementPlusNames(),
+          },
+        ],
       }),
     ],
     resolve: {
