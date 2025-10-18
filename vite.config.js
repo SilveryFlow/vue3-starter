@@ -9,6 +9,8 @@ import viteRestart from 'vite-plugin-restart'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 import { getElementPlusNames } from './scripts/getElComponents'
 
@@ -63,7 +65,12 @@ export default defineConfig(({ mode }) => {
         },
       }),
       Components({
-        resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+        resolvers: [
+          ElementPlusResolver({ importStyle: 'sass' }),
+          IconsResolver({
+            enabledCollections: ['ep'],
+          }),
+        ],
         dirs: ['src/components', 'src/views'],
         dts: 'src/types/components.d.ts',
         types: [
@@ -76,6 +83,9 @@ export default defineConfig(({ mode }) => {
             names: getElementPlusNames(),
           },
         ],
+      }),
+      Icons({
+        autoInstall: true,
       }),
     ],
     resolve: {
