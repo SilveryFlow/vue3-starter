@@ -12,7 +12,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-import { VChartResolver } from './scripts/unplugin-vue-components-resolvers'
+import { VChartResolver } from './scripts/vite/unplugin-vue-components-resolvers'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
       vueDevTools(),
       compression(),
       viteRestart({
-        restart: ['.env', 'vite.config.[jt]s', 'src/config/**/*'],
+        restart: ['.env*', 'vite.config.[jt]s', 'src/config/**/*', 'scripts/vite/**/*'],
       }),
       AutoImport({
         imports: [
