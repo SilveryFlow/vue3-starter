@@ -12,6 +12,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
+import { VChartResolver } from './scripts/unplugin-vue-components-resolvers'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -69,14 +70,7 @@ export default defineConfig(({ mode }) => {
           IconsResolver({
             enabledCollections: ['ep'],
           }),
-          (componentName) => {
-            if (componentName === 'VChart') {
-              return {
-                name: 'default',
-                from: 'vue-echarts',
-              }
-            }
-          },
+          VChartResolver,
         ],
         dirs: ['src/components', 'src/views'],
         dts: 'src/types/components.d.ts',
