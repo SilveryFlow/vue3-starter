@@ -12,6 +12,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import UnoCSS from 'unocss/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 import { VChartResolver } from './scripts/vite/unplugin-vue-components-resolvers'
 
@@ -67,6 +68,7 @@ export default defineConfig(({ mode }) => {
         autoInstall: true,
       }),
       UnoCSS(),
+      ViteImageOptimizer(),
     ],
     resolve: {
       alias: {
