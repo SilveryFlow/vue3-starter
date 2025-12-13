@@ -8,6 +8,7 @@ import DirectivesPlugin from '@/directives'
 
 import '@csstools/normalize.css'
 import 'virtual:uno.css'
+import '@/assets/styles/index.scss'
 
 const app = createApp(App)
 

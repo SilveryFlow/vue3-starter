@@ -28,8 +28,8 @@ export default defineConfig(({ mode }) => {
       devSourcemap: true,
       preprocessorOptions: {
         scss: {
-          // 自动注入全局样式变量（如需要可启用）
-          // additionalData: `@use "@/assets/styles/variables.scss" as *;`,
+          // 自动注入全局样式变量
+          additionalData: '@use "@/assets/styles/scss-variables.scss" as *;',
         },
       },
     },

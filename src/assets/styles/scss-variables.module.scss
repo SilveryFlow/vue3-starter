@@ -1,0 +1,9 @@
+// CSS Modules，导出scss变量示例
+/*
+导出的变量可以在js中通过import导入使用
+import { cssVariablesExample } from '@/assets/styles/scss-variables.module.scss'
+console.log(cssVariablesExample)
+*/
+:export {
+  css-variables-example: $css-variables-example;
+}

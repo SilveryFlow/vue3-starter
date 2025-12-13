@@ -53,5 +53,11 @@
     "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-restart": "^1.0.0",
     "vite-plugin-vue-devtools": "^8.0.5"
-  }
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "cn-font-split",
+    "koffi",
+    "protobufjs"
+  ]
 }
