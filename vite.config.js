@@ -13,6 +13,7 @@ import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import UnoCSS from 'unocss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import Font from 'vite-plugin-font'
 
 import { VChartResolver } from './scripts/vite/unplugin-vue-components-resolvers'
 
@@ -69,6 +70,9 @@ export default defineConfig(({ mode }) => {
       }),
       UnoCSS(),
       ViteImageOptimizer(),
+      Font.vite({
+        include: [/\.otf/, /\.ttf/, /\.woff/, /\.woff2/],
+      }),
     ],
     resolve: {
       alias: {

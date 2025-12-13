@@ -1,0 +1,8 @@
+// ======字体变量
+/*
+变量名和@/utils/fontSplitImport.js中的fonts对象的key一致，值无所谓，会被fonts对象中的font.family覆盖
+主要是为了配合vscode插件：CSS Navigation，使fontSplitImport注册的全局css变量获得提示
+*/
+:root {
+  --font-PingFangSCRegular: PingFang SC Regular;
+}
