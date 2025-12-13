@@ -11,6 +11,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import UnoCSS from 'unocss/vite'
 
 import { VChartResolver } from './scripts/vite/unplugin-vue-components-resolvers'
 
@@ -29,19 +30,6 @@ export default defineConfig(({ mode }) => {
           // additionalData: `@use "@/assets/styles/variables.scss" as *;`,
         },
       },
-    },
-    optimizeDeps: {
-      include: [
-        'vue',
-        'vue-router',
-        'pinia',
-        '@vueuse/core',
-        'element-plus',
-        'axios',
-        'echarts',
-        'three',
-      ],
-      exclude: ['vue-demi'],
     },
     plugins: [
       vue(),
@@ -78,6 +66,7 @@ export default defineConfig(({ mode }) => {
       Icons({
         autoInstall: true,
       }),
+      UnoCSS(),
     ],
     resolve: {
       alias: {
