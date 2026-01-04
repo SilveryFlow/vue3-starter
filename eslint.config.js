@@ -5,8 +5,8 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
-import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import pluginOxlint from 'eslint-plugin-oxlint'
 
 // 读取 unplugin-auto-import 生成的 ESLint globals
 const autoImportGlobalsPath = path.resolve('./.eslintrc-auto-import.json')
@@ -34,6 +34,8 @@ export default defineConfig([
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  ...pluginOxlint.configs['flat/recommended'],
+
   skipFormatting,
+
+  ...pluginOxlint.configs['flat/recommended'],
 ])

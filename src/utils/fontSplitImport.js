@@ -1,7 +1,6 @@
 // PingFang SC
 import { css as PingFangSCRegular } from '@/assets/fonts/PingFang SC Regular.woff2'
 
-
 export const fonts = {
   PingFangSCRegular,
 }
