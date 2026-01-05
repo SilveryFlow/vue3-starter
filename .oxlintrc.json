@@ -7,5 +7,5 @@
   "categories": {
     "correctness": "error"
   },
-  "ignorePatterns": ["**/vendors/**"]
+  "ignorePatterns": ["**/vendor/**"]
 }
