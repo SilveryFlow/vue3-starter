@@ -4,7 +4,6 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "oxc.oxc-vscode",
-    "prettier.prettier-vscode",
     "pucelle.vscode-css-navigation"
   ]
 }
