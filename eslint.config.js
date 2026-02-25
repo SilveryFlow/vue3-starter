@@ -6,6 +6,7 @@ import globals from 'globals'
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
+import skipFormatting from 'eslint-config-prettier/flat'
 import unocss from '@unocss/eslint-config/flat'
 
 // 读取 unplugin-auto-import 生成的 ESLint globals
@@ -38,4 +39,6 @@ export default defineConfig([
   ...pluginVue.configs['flat/essential'],
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
+
+  skipFormatting,
 ])

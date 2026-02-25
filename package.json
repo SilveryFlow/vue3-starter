@@ -33,6 +33,7 @@
     "@unocss/eslint-config": "^66.5.12",
     "@vitejs/plugin-vue": "^6.0.4",
     "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-oxlint": "~1.49.0",
     "eslint-plugin-vue": "~10.8.0",
     "globals": "^17.0.0",
