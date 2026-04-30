@@ -21,7 +21,6 @@
 - **样式系统**:
   - SCSS 预处理器，配置了自动注入全局变量。
   - Normalize.css 重置样式。
-  - 字体文件自动分割与优化加载 (`cn-font-split`, `vite-plugin-font`)。
 - **构建优化**:
   - 图片压缩 (`vite-plugin-image-optimizer`)。
   - Gzip/Brotli 压缩 (`vite-plugin-compression2`)。
@@ -97,14 +96,13 @@ bun run format:check
 src/
 ├── api/             # 接口请求层
 ├── assets/          # 静态资源
-│   ├── fonts/       # 字体文件
 │   └── styles/      # 样式文件 (index.scss, variables.scss)
 ├── components/      # 公共组件 (自动注册)
 ├── config/          # 全局配置
 ├── directives/      # 自定义指令
 ├── router/          # 路由配置
 ├── stores/          # Pinia 状态管理
-├── utils/           # 工具函数 (request.js, fontSplitImport.js 等)
+├── utils/           # 工具函数 (request.js 等)
 ├── views/           # 页面视图
 ├── App.vue          # 根组件
 └── main.js          # 入口文件

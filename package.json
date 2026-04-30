@@ -49,14 +49,12 @@
     "unplugin-vue-components": "^30.0.0",
     "vite": "^8.0.8",
     "vite-plugin-compression2": "^2.4.0",
-    "vite-plugin-font": "^5.1.2",
     "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-restart": "^2.0.0",
     "vite-plugin-vue-devtools": "^8.1.1"
   },
   "trustedDependencies": [
     "@parcel/watcher",
-    "cn-font-split",
     "esbuild",
     "koffi",
     "protobufjs",
