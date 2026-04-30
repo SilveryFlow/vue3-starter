@@ -21,6 +21,8 @@ coverage
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+.cursor/
+
 .idea
 *.suo
 *.ntvs*
@@ -29,3 +31,11 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+.eslintcache
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs

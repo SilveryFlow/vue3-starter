@@ -2,8 +2,6 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
-import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from 'eslint-config-prettier/flat'
@@ -27,7 +25,6 @@ export default defineConfig([
   {
     languageOptions: {
       globals: {
-        ...globals.browser,
         ...autoImportGlobals,
       },
     },
@@ -35,7 +32,6 @@ export default defineConfig([
 
   unocss,
 
-  js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
