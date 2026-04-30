@@ -1,14 +1,14 @@
-# Vue3 + Vite 7 项目模板
+# Vue3 + Vite 8 项目模板
 
-这是一个基于 Vue 3.5 + Vite 7 (Rolldown) 的现代化前端项目模板，集成了当前主流的技术栈和最佳实践。
+这是一个基于 Vue 3.5 + Vite 8 (Rolldown) 的现代化前端项目模板，集成了当前主流的技术栈和最佳实践。
 
 ## 特性
 
 ### 核心技术栈
 - **Vue 3.5**: 使用 Composition API 和 `<script setup>` 语法。
-- **Vite 7**: 下一代前端构建工具，开启 Rolldown 引擎。
-- **Pinia**: 官方推荐的状态管理库。
-- **Vue Router**: 路由管理。
+- **Vite 8**: 下一代前端构建工具，开启 Rolldown 引擎。
+- **Pinia 3**: 官方推荐的状态管理库。
+- **Vue Router 5**: 路由管理。
 - **Element Plus**: 基于 Vue 3 的组件库，已配置按需导入。
 - **UnoCSS**: 即时原子化 CSS 引擎。
 - **ECharts 6**: 配合 `vue-echarts` 实现数据可视化。
@@ -17,7 +17,7 @@
 - **自动导入**:
   - `unplugin-auto-import`: 自动导入 Vue、Vue Router、Pinia、VueUse 等 API。
   - `unplugin-vue-components`: 自动导入 Element Plus 组件、ECharts 图表组件。
-  - `unplugin-icons`: 自动导入 Iconify 图表（支持 Element Plus 图标集 `i-ep-*`）。
+  - `unplugin-icons`: 自动导入 Iconify 图标（支持 Element Plus 图标集 `i-ep-*`）。
 - **样式系统**:
   - SCSS 预处理器，配置了自动注入全局变量。
   - Normalize.css 重置样式。
@@ -27,12 +27,9 @@
   - Gzip/Brotli 压缩 (`vite-plugin-compression2`)。
   - 智能分包策略 (`framework`, `echarts`, `element-plus` 等独立分包)。
 - **代码规范**:
-  - ESLint (Flat Config) + Oxlint (极速 Lint) + Prettier。
-  - Git Hooks (尚未配置 husky，但脚本已就绪)。
-
-### 工具库
-- **Axios**: 二次封装的请求工具，支持拦截器、取消请求、错误处理。
-- **VueUse**: 强大的 Vue 组合式工具集。
+  - ESLint 10 (Flat Config) + Oxlint (极速 Lint) + Oxfmt (代码格式化)。
+- **Git 工作流**:
+  - Commitizen 交互式提交。
 
 ## 快速开始
 
@@ -89,6 +86,9 @@ bun lint:oxlint
 
 # 格式化代码
 bun format
+
+# 检查格式是否符合要求
+bun run format:check
 ```
 
 ## 目录结构
@@ -104,7 +104,6 @@ src/
 ├── directives/      # 自定义指令
 ├── router/          # 路由配置
 ├── stores/          # Pinia 状态管理
-├── types/           # TypeScript 类型定义
 ├── utils/           # 工具函数 (request.js, fontSplitImport.js 等)
 ├── views/           # 页面视图
 ├── App.vue          # 根组件
@@ -168,16 +167,19 @@ export function getUserInfo() {
 
 ## 依赖列表
 
-| 依赖 | 说明 |
-| --- | --- |
-| `vue` | ^3.5.25 |
-| `vite` | ^8.0.0-beta.1 |
-| `element-plus` | ^2.12.0 |
-| `pinia` | ^3.0.4 |
-| `vue-router` | ^4.6.4 |
-| `echarts` | ^6.0.0 |
-| `unocss` | ^66.5.10 |
-| `axios` | ^1.13.2 |
+| 依赖           | 版本      | 说明         |
+| -------------- | --------- | ------------ |
+| `vue`          | ^3.5.32   | 核心框架     |
+| `vue-router`   | ^5.0.4    | 路由管理     |
+| `pinia`        | ^3.0.4    | 状态管理     |
+| `element-plus` | ^2.13.0   | UI 组件库    |
+| `echarts`      | ^6.0.0    | 图表库       |
+| `unocss`       | ^66.5.12  | 原子化 CSS   |
+| `axios`        | ^1.13.2   | HTTP 请求    |
+| `vite`         | ^8.0.8    | 构建工具     |
+| `oxlint`       | ~1.62.0   | 极速 Lint    |
+| `oxfmt`        | ^0.47.0   | 代码格式化   |
+| `eslint`       | ^10.2.1   | 代码检查     |
 
 ## License
 
