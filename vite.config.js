@@ -105,7 +105,6 @@ export default defineConfig(({ mode }) => {
     build: {
       rolldownOptions: {
         output: {
-          // 静态资源分类打包
           chunkFileNames: 'js/[name]-[hash].js',
           entryFileNames: 'js/[name]-[hash].js',
 
@@ -125,41 +124,36 @@ export default defineConfig(({ mode }) => {
             }
             return 'assets/[name]-[hash][extname]'
           },
-        },
 
-        advancedChunks: {
-          groups: [
-            {
-              // 核心框架：vue + vue-router + pinia 合并（体积小，一起更新）
-              name: 'framework',
-              test: /\/node_modules\/(vue|@vue\/|vue-router|pinia)/,
-              priority: 20, // 高优先级，优先匹配
-            },
-            {
-              // ECharts 单独分包
-              name: 'echarts',
-              test: /\/node_modules\/echarts/,
-              priority: 15,
-            },
-            {
-              // Element Plus 单独分包
-              name: 'element-plus',
-              test: /\/node_modules\/element-plus/,
-              priority: 15,
-            },
-            {
-              // Three.js 单独分包
-              name: 'three',
-              test: /\/node_modules\/three/,
-              priority: 15,
-            },
-            {
-              // 其他依赖统一打包（axios、@vueuse 等小型库）
-              name: 'vendor',
-              test: /\/node_modules\//,
-              priority: 10, // 最低优先级，兜底规则
-            },
-          ],
+          codeSplitting: {
+            groups: [
+              {
+                name: 'framework',
+                test: /node_modules[\\/]vue/,
+                priority: 20,
+              },
+              {
+                name: 'echarts',
+                test: /node_modules[\\/]echarts/,
+                priority: 15,
+              },
+              {
+                name: 'element-plus',
+                test: /node_modules[\\/]element-plus/,
+                priority: 15,
+              },
+              {
+                name: 'three',
+                test: /node_modules[\\/]three/,
+                priority: 15,
+              },
+              {
+                name: 'vendor',
+                test: /node_modules/,
+                priority: 10,
+              },
+            ],
+          },
         },
       },
     },
